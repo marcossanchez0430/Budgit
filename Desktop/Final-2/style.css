@@ -1,0 +1,11 @@
+#foodstyle
+{
+    background-image: url("https://media-cdn.tripadvisor.com/media/photo-s/0a/7b/7b/c6/restaurant-view.jpg");
+    background-size: cover;
+}
+#content
+{
+    margin-left: 40%;
+    background-color: white;
+    position: absolute;
+}

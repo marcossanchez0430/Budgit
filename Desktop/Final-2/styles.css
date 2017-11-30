@@ -1,0 +1,36 @@
+.indexstyle
+{
+    background-image: url("https://cdn.shutterstock.com/shutterstock/videos/3237343/thumb/3.jpg");
+    background-size: cover;
+}
+h1
+{
+    text-align: center;
+    color: red;
+}
+div
+{
+  margin-left: 35%;
+
+}
+form
+{
+    margin-top: 25%;
+
+}
+input
+{
+    width: 65%;
+    height: 65%;
+}
+.budget
+{
+    margin-left: auto;
+    margin-right: auto;
+
+}
+#button
+{
+    margin-left: 5%;
+    margin-right: auto;
+}
