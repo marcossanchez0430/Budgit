@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<head>
+<link rel="stylesheet" type="text/css" href="SnakeGame.css">
+<script src="https://use.fontawesome.com/ff1f8c954f.js"></script>
+</head>
+<div class="main">
+  <div class="score"><h1>Your Score:</h1><h1 id="score"></h1></div>
+<canvas id="canvas" width="400" height="400"></canvas>
+<script>
+window.onload = function() {
+  canvas = document.getElementById("canvas");
+  context = canvas.getContext("2d");
+  document.addEventListener("keydown", keyDown);
+  setInterval(start, 1000/x);
+}
+x = 15;
+y = 0;
+playerx = 15;
+playery = 15;
+size = 20;
+tiles = 20;
+foodx = 7;
+foody = 7;
+poisonx = 1;
+poisony = 1;
+velocityx = 0;
+velocityy = 0;
+trail = [];
+tail = 5;
+
+
+
+function start() {
+  document.getElementById('score').innerHTML = y;
+    playerx += velocityx;
+    playery += velocityy;
+    if(playerx < 0) {
+        playerx = tiles - 1;
+    }
+    if(playerx > tiles - 1) {
+        playerx = 0;
+    }
+    if(playery < 0 ) {
+        playery= tiles - 1;
+    }
+    if(playery > tiles - 1) {
+        playery = 0;
+    }
+    context.fillStyle = "white";
+    context.fillRect(0,0,canvas.width,canvas.height);
+
+    context.fillStyle = "brown";
+    for(var i = 0; i < trail.length; i++) {
+        context.fillRect(trail[i].x * size, trail[i].y * size, size - 2, size - 2);
+        if(trail[i].x == playerx && trail[i].y == playery) {
+            tail = 5;
+        }
+    }
+    trail.push({x:playerx,y:playery});
+    while(trail.length > tail) {
+    trail.shift();
+    }
+
+    if(foodx == playerx && foody == playery) {
+  document.getElementById('score').innerHTML = y += 100;
+        tail++;
+        x = x + 2;
+        foodx = Math.floor(Math.random() * tiles);
+        foody = Math.floor(Math.random() * tiles);
+      }
+    context.fillStyle = "red";
+    context.fillRect(foodx * size, foody * size, size - 2, size - 2);
+
+    if(poisonx == playerx && poisony == playery) {    document.getElementById('score').innerHTML = y -= 100;
+        tail--;
+        poisonx = Math.floor(Math.random() * tiles);
+        poisony = Math.floor(Math.random() * tiles);
+      }
+
+    context.fillStyle = "green";
+    context.fillRect(poisonx * size, poisony * size, size - 2, size - 2);
+
+     if(tail == 0) {
+       window.stop();
+       alert("Game Over.")
+       alert("Click Close To Start Again");
+       tail = 5;
+     }
+}
+
+  function pause() {
+  window.stop();
+    alert("The Game Has Been Paused.");
+}
+
+function keyDown(evt) {
+    switch(evt.keyCode) {
+        case 37:
+            velocityx = -1; velocityy = 0;
+        evt.preventDefault();
+            break;
+        case 38:
+            velocityx = 0; velocityy = -1;
+        evt.preventDefault();
+            break;
+        case 39:
+            velocityx = 1; velocityy = 0;
+        evt.preventDefault();
+            break;
+        case 40:
+            velocityx = 0; velocityy = 1;
+        evt.preventDefault();
+            break;
+    }
+}
+</script>
+<div class="start">
+  <button class="right" onclick="pause()">Pause</button>
+</div>
+<div class="legend">
+  <h2>Controls and Symbols:</h2>
+  <p>
+    Green Square = Poison<br>
+    Red Square = Food<br>
+ <i class="fa fa-arrow-up" aria-hidden="true"></i>UP<br>
+    <i class="fa fa-arrow-down" aria-hidden="true"></i>DOWN<br>
+    <i class="fa fa-arrow-left" aria-hidden="true"></i>LEFT<br>
+    <i class="fa fa-arrow-right" aria-hidden="true"></i>RIGHT<br>
+</p>
+</div>
+</div>
