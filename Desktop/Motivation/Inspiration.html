@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+ <link rel="stylesheet" type="text/css" href="Inspiration.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<body>
+
+<div ng-app="myApp" ng-controller="myQuote">
+
+<p>Alittle inspiration for you:</p>
+
+<h1>
+  {{display}}
+  </h1>
+
+</div>
+
+
+<script>
+angular.module('myApp', [])
+.controller('myQuote', ['$scope', '$interval', function($scope, $interval) {
+  $scope.count = 0;
+  $scope.quotes = [
+      {quote: 'I can accept failure. Everyone fails at something. But I cannot accept not trying. - Michael Jordan'},
+    {quote: 'Be patient with yourself. Self-growth is tender, it’s holy ground. There’s no greater investment. -- Stephen Covey'},
+    {quote: 'In every success story, you will find someone who has made a courageous decision. -- Peter F. Drucker'},
+    {quote: 'If you can dream it, you can do it. -- Walt Disney'},
+    {quote: 'We must train from the inside out. Using our strengths to attack and nullify any weaknesses. It’s not about denying a weakness may exist but about denying its right to persist. -- Vince McConnell'},
+    {quote: 'I can accept failure. Everyone fails at something. But I cannot accept not trying. - Michael Jordan'},
+    {quote: 'All of the great leaders have had one characteristic in common: it was the willingness to confront unequivocally the major anxiety of their people in their time. This, and not much else, is the essence of leadership. -- John Kenneth Galbraith'},
+    {quote: 'My best advice to entrepreneurs is this: Forget about making mistakes, just do it. -- Ajaero Tony Martins'},
+    {quote: 'Achievement seems to be connected with action. Successful men and women keep moving. They make mistakes but they don’t quit. -- Conrad Hilton'},
+    {quote: 'Continuous learning is the minimum requirement for success in any field. -- Dennis Waitley'},
+    {quote: 'Ambition is the steam that drives men forward on the road to success. Only the engine under full steam can make the grade. -- Maxi Foreman'}
+    ];
+  var loop = function() {
+    $interval(function() {
+      $scope.display = $scope.quotes[$scope.count%10].quote;
+      $scope.count++;
+    }, 10000);
+  }
+  loop();
+}]);
+</script>
+</body>
+</html>

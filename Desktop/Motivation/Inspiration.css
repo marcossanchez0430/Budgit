@@ -1,0 +1,13 @@
+body {
+  background: url("https://i.ytimg.com/vi/fbpK5RPCpUg/maxresdefault.jpg");
+  background-size: cover;
+}
+p {
+  font-size: 36px;
+}
+h1 {
+  text-align: left;
+  font-family: Impact,Charcoal,sans-serif;
+  font-size: 48px;
+  color: #f49e42;
+}
